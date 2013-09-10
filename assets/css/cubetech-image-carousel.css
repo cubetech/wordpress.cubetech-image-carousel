@@ -1,29 +1,67 @@
-.cubetech-image-carousel-container { margin-right: 20px; margin-top: 20px; }
+.cubetech-image-carousel-container {
+	/* non-important css to give some space between the carousel and the top of hte browser */
+	margin-top: 10px;
+	display: inline-block;
+	width: 100%;
+	overflow: hidden;
+	padding-left: 40px;
+	padding-right: 40px;
+}
+.cubetech-image-carousel-inner {
+	float: left; 
+	width: 94.5%; 
+	overflow: hidden; 
+}  
+.cubetech-image-carousel {
+	position: relative;
+	/* moves everything one picture width left so that if the first slider button clicked is the right one, there is an image on the left to slide over to the right insteado of a blank space */
+	left: -275px;
+	list-style-type: none; 
+	margin: 0px;
+	padding: 0px;
+	width:9999px;
+	display: inline-block;
+}
 
-.cubetech-image-carousel { padding: 0; text-align: justify; margin: 0; }
-.cubetech-image-carousel li { display: inline-block; list-style: none; position: relative; text-align: center; max-width: 19.2%; box-sizing: border-box; }
-.cubetech-image-carousel hr { border-top: 1px solid #d6dfe4; margin: 0; padding: 0; margin-top: -20px; margin-bottom: 25px; }
+.cubetech-image-carousel li {  
+	float: left;
+	width: 267px;
+	padding:0px;  
+	height: 100px; 
+	background: transparent;  
+	margin: 0;
+	text-align: center;
+}
 
-.cubetech-image-carousel-icon { padding: 20px 6px 0; }
-.cubetech-image-carousel-active { background-color: #edf5fa; }
-.cubetech-image-carousel-icon p { text-align: center; margin-top: 20px; vertical-align: middle; }
-.cubetech-image-carousel-empty { padding: 0; padding-left: 100%; }
-.cubetech-image-carousel-thumb-active-icon { display: none; display: inline-block; position: absolute; bottom: -13px; left: 0; right: 0; margin-left: auto; margin-right: auto; }
-.cubetech-image-carousel-thumb-active { background: url(../img/cubetech-image-carousel-active.png) no-repeat center center; }
+.cubetech-image-carousel li img {
+	height: 100px;
+	width: auto;
+}
 
-.cubetech-image-carousel-content { position: relative; min-height: 150px; }
-.cubetech-image-carousel-slide { position: absolute; top: 0; left: 0; background: white; width: 100%; display: none; }
-
-.cubetech-image-carousel-thumb-second { display: none; position: absolute; top: 20px; left: 0; right: 0; margin-left: auto; margin-right: auto; }
-.cubetech-image-carousel-thumb { position: relative; top: 0; left: 0; right: 0; margin-left: auto; margin-right: auto; }
-
-.cubetech-image-carousel-link { display: inline-block; background: url(../img/cubetech-image-carousel-button.png) no-repeat center center; height: 50px; width: 132px; line-height: 50px; text-align: center; }
-.cubetech-image-carousel-link a { color: white; text-decoration: none; display: inline-block; height: 100%; width: 100%; text-align: center; }
-.cubetech-image-carousel-link a:hover { color: white; }
-
-@media (max-width: 979px) {
-	
-	.cubetech-image-carousel-icon { padding: 20px 2px 0; }
-	.cubetech-image-carousel-icon p { font-size: 11px; min-height: 40px; display: inline-block; }
-	
+#left_scroll {
+	position: absolute;
+	left: 0;
+	bottom:13px;
+	background: url('../img/arrow-left.png') no-repeat;
+	height: 32px;
+	width: 55px;
+	background-position:center; 
+}
+#right_scroll {
+	position: absolute;
+	right: 0;
+	bottom:13px;
+	background: url('../img/arrow-right.png') no-repeat;
+	height: 32px;
+	width: 55px;
+	background-position:center; 
+}
+#cubetech-image-carousel-bottomline { 
+	background: url(../img/slider-border.png);
+	height: 1px;
+	border: none;
+	width: 1370px;
+	position: relative;
+	right: 80px;
+	top: -12px;
 }

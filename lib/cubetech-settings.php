@@ -8,7 +8,7 @@ if($_GET['settings-updated'] == true)
 function cubetech_image_carousel_create_menu() {
 
 	//create new top-level menu
-	add_submenu_page('edit.php?post_type=cubetech_image_carousel', 'Einstellungen', 'Einstellungen', 'edit_posts', __FILE__, 'cubetech_image_carousel_settings_page');
+	add_submenu_page('edit.php?post_type=cubetech_imgcarousel', 'Einstellungen', 'Einstellungen', 'edit_posts', __FILE__, 'cubetech_image_carousel_settings_page');
 
 	//call register settings function
 	add_action( 'admin_init', 'register_cubetech_image_carousel_settings' );

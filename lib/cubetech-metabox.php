@@ -6,7 +6,7 @@ function add_cubetech_image_carousel_meta_box() {
 		'cubetech_image_carousel_meta_box', // $id
 		'Details des Inhaltes', // $title 
 		'show_cubetech_image_carousel_meta_box', // $callback
-		'cubetech_image_carousel', // $page
+		'cubetech_imgcarousel', // $page
 		'normal', // $context
 		'high'); // $priority
 }
@@ -38,12 +38,6 @@ foreach($pagelist as $p) {
 
 $cubetech_image_carousel_meta_fields = array(
 	array(
-		'label'=> 'Bildtitel',
-		'desc'	=> 'Titel unter dem Vorschaubild',
-		'id'	=> $prefix.'imagetitle',
-		'type'	=> 'text'
-	),
-	array(
 		'label'=> 'Verlinkung intern',
 		'desc'	=> 'Interne Seiten und Beiträge',
 		'id'	=> $prefix.'links',
@@ -56,6 +50,12 @@ $cubetech_image_carousel_meta_fields = array(
 		'id'	=> $prefix.'externallink',
 		'type'	=> 'text'
 	),
+	array(  
+	    'label'  => 'Bild',  
+	    'desc'  => 'Bild im Slider',  
+	    'id'    => $prefix.'image',  
+	    'type'  => 'image'  
+	) 
 );
 
 // The Callback
@@ -100,6 +100,22 @@ echo '<input type="hidden" name="cubetech_image_carousel_meta_box_nonce" value="
 						}
 						echo '</select><br /><span class="description">'.$field['desc'].'</span>';
 					break;
+					// image
+					case 'image':
+						if ($meta) {
+							$image = wp_get_attachment_image_src($meta, 'medium');
+							$image = '<img src="' . $image[0] . '" class="cubetech-preview-image" alt="' . $field['id'] . '" style="max-height: 100px;" /><br />';
+						} else {
+							$image = '<img class="cubetech-preview-image" alt="" style="max-height: 100px;" /><br />';
+						}
+						echo '
+						<input name="' . $field['id'] . '" type="hidden" class="cubetech-upload-image" value="' . $meta . '" />
+						' . $image . '
+						<input class="cubetech-upload-image-button button" type="button" value="Bild auswählen" />
+						<small> <a href="#" class="cubetech-clear-image-button">Bild entfernen</a></small>
+						<br clear="all" /><span class="description" style="display: inline-block; margin-top: 5px;">' . $field['desc'] . '</span>';
+					break;
+
 				} //end switch
 		echo '</td></tr>';
 	} // end foreach
