@@ -9,7 +9,7 @@
 }
 .cubetech-image-carousel-inner {
 	float: left; 
-	width: 94.5%; 
+	width: 100%; 
 	overflow: hidden; 
 }  
 .cubetech-image-carousel {
@@ -39,6 +39,7 @@
 }
 
 #left_scroll {
+	cursor:pointer;
 	position: absolute;
 	left: 0;
 	bottom:13px;
@@ -48,6 +49,7 @@
 	background-position:center; 
 }
 #right_scroll {
+	cursor:pointer;
 	position: absolute;
 	right: 0;
 	bottom:13px;
