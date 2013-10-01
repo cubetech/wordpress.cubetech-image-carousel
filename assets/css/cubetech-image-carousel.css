@@ -41,29 +41,30 @@
 #left_scroll {
 	cursor:pointer;
 	position: absolute;
-	left: 0;
-	bottom:13px;
-	background: url('../img/arrow-left.png') no-repeat;
-	height: 32px;
-	width: 55px;
+	left: 20px;
+	bottom:35px;
+	background: url('../img/carousel-arrow-left.png') no-repeat;
+	height: 36px;
+	width: 35px;
 	background-position:center; 
 }
 #right_scroll {
 	cursor:pointer;
 	position: absolute;
-	right: 0;
-	bottom:13px;
-	background: url('../img/arrow-right.png') no-repeat;
-	height: 32px;
-	width: 55px;
+	right: 20px;
+	bottom:35px;
+	background: url('../img/carousel-arrow-right.png') no-repeat;
+	height: 35px;
+	width: 36px;
 	background-position:center; 
 }
 #cubetech-image-carousel-bottomline { 
-	background: url(../img/slider-border.png);
+	background: url(../img/slider-border.png) center center;
 	height: 1px;
 	border: none;
-	width: 115%;
+	width: 100%;
+	background-size: 105% 1px; 
 	position: relative;
-	right: 80px;
-	top: -12px;
+	right: 0;
+	top: -11px;
 }

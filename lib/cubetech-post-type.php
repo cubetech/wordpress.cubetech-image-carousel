@@ -23,7 +23,7 @@ function cubetech_image_carousel_create_post_type() {
 			'menu_position' => '20',
 			'menu_icon' => null,
 			'hierarchical' => true,
-			'supports' => array('title', 'editor', 'thumbnail')
+			'supports' => array('title')
 		)
 	);
 	flush_rewrite_rules();
