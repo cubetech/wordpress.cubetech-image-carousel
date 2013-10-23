@@ -16,15 +16,14 @@ include_once('lib/cubetech-shortcode.php');
 
 add_image_size( 'cubetech-image-carousel-thumb', 200, 100, true );
 
-wp_enqueue_script('jquery');
-wp_register_script('cubetech_image_carousel_js', plugins_url('assets/js/cubetech-image-carousel.js', __FILE__), 'jquery');
-wp_enqueue_script('cubetech_image_carousel_js');
-
 add_action('wp_enqueue_scripts', 'cubetech_image_carousel_add_styles');
 
 function cubetech_image_carousel_add_styles() {
 	wp_register_style('cubetech-image-carousel-css', plugins_url('assets/css/cubetech-image-carousel.css', __FILE__) );
 	wp_enqueue_style('cubetech-image-carousel-css');
+	wp_enqueue_script('jquery');
+	wp_register_script('cubetech_image_carousel_js', plugins_url('assets/js/cubetech-image-carousel.js', __FILE__), 'jquery');
+	wp_enqueue_script('cubetech_image_carousel_js');
 }
 
 /* Add button to TinyMCE */

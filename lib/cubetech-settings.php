@@ -2,7 +2,7 @@
 // create custom plugin settings menu
 add_action('admin_menu', 'cubetech_image_carousel_create_menu');
 
-if($_GET['settings-updated'] == true)
+if(isset($_GET['settings-updated']) && $_GET['settings-updated'] == true)
 	echo '<div id="message" class="updated fade"><p>Einstellungen gespeichert.</p></div>';
 
 function cubetech_image_carousel_create_menu() {
