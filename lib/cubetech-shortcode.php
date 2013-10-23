@@ -55,10 +55,6 @@ function cubetech_image_carousel_content($posts) {
 	
 		$post_meta_data = get_post_custom($post->ID);
 		$terms = wp_get_post_terms($post->ID, 'cubetech_image_carousel_group');
-		$function = $post_meta_data['cubetech_image_carousel_function'][0];
-		$edu = $post_meta_data['cubetech_image_carousel_edu'][0];
-		$mail = $post_meta_data['cubetech_image_carousel_mail'][0];
-		$phone = $post_meta_data['cubetech_image_carousel_phone'][0];
 		
 		$titlelink = array('', '');
 		$title = '<h3 class="cubetech-image-carousel-title">' . $post->post_title . '</h3>';
