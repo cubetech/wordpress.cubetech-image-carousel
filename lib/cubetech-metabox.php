@@ -2,6 +2,7 @@
 
 // Add the Meta Box
 function add_cubetech_image_carousel_meta_box() {
+	init_cubetech_image_carousel_meta_box();
 	add_meta_box(
 		'cubetech_image_carousel_meta_box', // $id
 		'Details des Inhaltes', // $title 
@@ -15,48 +16,52 @@ add_action('add_meta_boxes', 'add_cubetech_image_carousel_meta_box');
 // Field Array
 $prefix = 'cubetech_image_carousel_';
 
-$args = array( 'posts_per_page' => -1, 'numberposts' => -1, 'post_status' => 'publish', 'post_type' => 'post', 'order' => 'ASC', 'orderby' => 'title' ); 
-$postlist = get_posts( $args );
+function init_cubetech_image_carousel_meta_box() {
 
-$args = array( 'posts_per_page' => -1, 'numberposts' => -1, 'post_status' => 'publish', 'post_type' => 'page', 'order' => 'ASC', 'orderby' => 'title' ); 
-$pagelist = get_posts( $args );
+	$args = array( 'posts_per_page' => -1, 'numberposts' => -1, 'post_status' => 'publish', 'post_type' => 'post', 'order' => 'ASC', 'orderby' => 'title' ); 
+	$postlist = get_posts( $args );
+	
+	$args = array( 'posts_per_page' => -1, 'numberposts' => -1, 'post_status' => 'publish', 'post_type' => 'page', 'order' => 'ASC', 'orderby' => 'title' ); 
+	$pagelist = get_posts( $args );
+	
+	$options = array();
+	array_push($options, array('label' => 'Keine interne Verlinkung', 'value' => 'nope'));
+	array_push($options, array('label' => '', 'value' => false));
+	
+	array_push($options, array('label' => '----- Beiträge -----', 'value' => false));
+	foreach($postlist as $p) {
+		array_push($options, array('label' => $p->post_title, 'value' => $p->ID));
+	}
+	
+	array_push($options, array('label' => '', 'value' => false));
+	array_push($options, array('label' => '----- Seiten -----', 'value' => false));
+	foreach($pagelist as $p) {
+		array_push($options, array('label' => $p->post_title, 'value' => $p->ID));
+	}
+	
+	$cubetech_image_carousel_meta_fields = array(
+		array(
+			'label'=> 'Verlinkung intern',
+			'desc'	=> 'Interne Seiten und Beiträge',
+			'id'	=> $prefix.'links',
+			'type'	=> 'select',
+			'options' => $options,
+		),
+		array(
+			'label'=> 'Verlinkung extern',
+			'desc'	=> 'Externe Verlinkung (mit http://) – wird vor interner Verlinkung priorisiert wenn ausgefüllt',
+			'id'	=> $prefix.'externallink',
+			'type'	=> 'text'
+		),
+		array(  
+		    'label'  => 'Bild',  
+		    'desc'  => 'Bild im Slider',  
+		    'id'    => $prefix.'image',  
+		    'type'  => 'image'  
+		) 
+	);
 
-$options = array();
-array_push($options, array('label' => 'Keine interne Verlinkung', 'value' => 'nope'));
-array_push($options, array('label' => '', 'value' => false));
-
-array_push($options, array('label' => '----- Beiträge -----', 'value' => false));
-foreach($postlist as $p) {
-	array_push($options, array('label' => $p->post_title, 'value' => $p->ID));
 }
-
-array_push($options, array('label' => '', 'value' => false));
-array_push($options, array('label' => '----- Seiten -----', 'value' => false));
-foreach($pagelist as $p) {
-	array_push($options, array('label' => $p->post_title, 'value' => $p->ID));
-}
-
-$cubetech_image_carousel_meta_fields = array(
-	array(
-		'label'=> 'Verlinkung intern',
-		'desc'	=> 'Interne Seiten und Beiträge',
-		'id'	=> $prefix.'links',
-		'type'	=> 'select',
-		'options' => $options,
-	),
-	array(
-		'label'=> 'Verlinkung extern',
-		'desc'	=> 'Externe Verlinkung (mit http://) – wird vor interner Verlinkung priorisiert wenn ausgefüllt',
-		'id'	=> $prefix.'externallink',
-		'type'	=> 'text'
-	),
-	array(  
-	    'label'  => 'Bild',  
-	    'desc'  => 'Bild im Slider',  
-	    'id'    => $prefix.'image',  
-	    'type'  => 'image'  
-	) 
-);
 
 // The Callback
 function show_cubetech_image_carousel_meta_box() {

@@ -16,7 +16,7 @@ include_once('lib/cubetech-shortcode.php');
 
 add_image_size( 'cubetech-image-carousel-thumb', 200, 100, true );
 
-add_action('wp_enqueue_scripts', 'cubetech_image_carousel_add_styles');
+add_action('init', 'cubetech_image_carousel_add_styles');
 
 function cubetech_image_carousel_add_styles() {
 	wp_register_style('cubetech-image-carousel-css', plugins_url('assets/css/cubetech-image-carousel.css', __FILE__) );
