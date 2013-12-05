@@ -14,10 +14,18 @@ function add_cubetech_image_carousel_meta_box() {
 add_action('add_meta_boxes', 'add_cubetech_image_carousel_meta_box');
 
 // Field Array
-$prefix = 'cubetech_image_carousel_';
+
 
 function init_cubetech_image_carousel_meta_box() {
-
+$prefix = 'cubetech_image_carousel_';
+$cubetech_image_carousel_meta_fields = array(
+	array(  
+	    'label'  => 'Bild',  
+	    'desc'  => 'Bild im Slider',  
+	    'id'    => $prefix.'image',  
+	    'type'  => 'image'  
+	) 
+);
 	$args = array( 'posts_per_page' => -1, 'numberposts' => -1, 'post_status' => 'publish', 'post_type' => 'post', 'order' => 'ASC', 'orderby' => 'title' ); 
 	$postlist = get_posts( $args );
 	
@@ -39,33 +47,22 @@ function init_cubetech_image_carousel_meta_box() {
 		array_push($options, array('label' => $p->post_title, 'value' => $p->ID));
 	}
 	
-	$cubetech_image_carousel_meta_fields = array(
-		array(
-			'label'=> 'Verlinkung intern',
-			'desc'	=> 'Interne Seiten und Beiträge',
-			'id'	=> $prefix.'links',
-			'type'	=> 'select',
-			'options' => $options,
-		),
-		array(
-			'label'=> 'Verlinkung extern',
-			'desc'	=> 'Externe Verlinkung (mit http://) – wird vor interner Verlinkung priorisiert wenn ausgefüllt',
-			'id'	=> $prefix.'externallink',
-			'type'	=> 'text'
-		),
-		array(  
-		    'label'  => 'Bild',  
-		    'desc'  => 'Bild im Slider',  
-		    'id'    => $prefix.'image',  
-		    'type'  => 'image'  
-		) 
-	);
+
 
 }
 
 // The Callback
 function show_cubetech_image_carousel_meta_box() {
-global $cubetech_image_carousel_meta_fields, $post;
+global $post;
+$prefix = 'cubetech_image_carousel_';
+$cubetech_image_carousel_meta_fields = array(
+	array(  
+	    'label'  => 'Bild',  
+	    'desc'  => 'Bild im Slider',  
+	    'id'    => $prefix.'image',  
+	    'type'  => 'image'  
+	) 
+);
 // Use nonce for verification
 echo '<input type="hidden" name="cubetech_image_carousel_meta_box_nonce" value="'.wp_create_nonce(basename(__FILE__)).'" />';
 	
@@ -129,8 +126,15 @@ echo '<input type="hidden" name="cubetech_image_carousel_meta_box_nonce" value="
 
 // Save the Data
 function save_cubetech_image_carousel_meta($post_id) {
-    global $cubetech_image_carousel_meta_fields;
-	
+$prefix = 'cubetech_image_carousel_';
+$cubetech_image_carousel_meta_fields = array(
+	array(  
+	    'label'  => 'Bild',  
+	    'desc'  => 'Bild im Slider',  
+	    'id'    => $prefix.'image',  
+	    'type'  => 'image'  
+	) 
+);
 	// verify nonce
 	if (!wp_verify_nonce($_POST['cubetech_image_carousel_meta_box_nonce'], basename(__FILE__))) 
 		return $post_id;
