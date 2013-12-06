@@ -34,7 +34,7 @@
 }
 
 .cubetech-image-carousel li img {
-	height: 100px;
+	bottom: 0px;
 	width: auto;
 }
 
@@ -47,6 +47,7 @@
 	height: 36px;
 	width: 35px;
 	background-position:center; 
+	transition: background 0.2s;
 }
 #right_scroll {
 	cursor:pointer;
@@ -54,6 +55,27 @@
 	right: 20px;
 	bottom:35px;
 	background: url('../img/carousel-arrow-right.png') no-repeat;
+	height: 35px;
+	width: 36px;
+	background-position:center; 
+	transition: background 0.2s;
+}
+#left_scroll:hover {
+	cursor:pointer;
+	position: absolute;
+	left: 20px;
+	bottom:35px;
+	background: url('../img/carousel-arrow-left-hover.png') no-repeat;
+	height: 36px;
+	width: 35px;
+	background-position:center; 
+}
+#right_scroll:hover {
+	cursor:pointer;
+	position: absolute;
+	right: 20px;
+	bottom:35px;
+	background: url('../img/carousel-arrow-right-hover.png') no-repeat;
 	height: 35px;
 	width: 36px;
 	background-position:center; 
