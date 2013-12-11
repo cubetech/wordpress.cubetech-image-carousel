@@ -85,11 +85,21 @@ function cubetech_image_carousel_content($posts) {
 				break;
 			}
 		}
-
-		$contentreturn .= '
+		
+		if($post_meta_data['cubetech_image_carousel_link'])
+		{
+			$contentreturn .= '
 		<li class="cubetech-image-carousel-icon cubetech-image-carousel-slide-' . $i . '">
-			' . $image . '
+			<div style="display:table-cell; width:267px; height:100px; vertical-align: bottom;"><a href="'.$post_meta_data['cubetech_image_carousel_link'][0].'">' . $image . '</a></div>
 		</li>';
+		}else
+		{
+			$contentreturn .= '
+		<li class="cubetech-image-carousel-icon cubetech-image-carousel-slide-' . $i . '">
+			<div style="display:table-cell; width:267px; height:100px; vertical-align: bottom;">' . $image . '</div>
+		</li>';	
+		}
+		
 		
 		$i++;
 	}

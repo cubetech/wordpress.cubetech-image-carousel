@@ -14,7 +14,7 @@ include_once('lib/cubetech-post-type.php');
 include_once('lib/cubetech-settings.php');
 include_once('lib/cubetech-shortcode.php');
 
-add_image_size( 'cubetech-image-carousel-thumb', 267, 100, false );
+add_image_size( 'cubetech-image-carousel-thumb', 227, 100, false );
 
 add_action('init', 'cubetech_image_carousel_add_styles');
 

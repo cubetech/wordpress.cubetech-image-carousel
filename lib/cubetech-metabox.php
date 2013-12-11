@@ -61,7 +61,13 @@ $cubetech_image_carousel_meta_fields = array(
 	    'desc'  => 'Bild im Slider',  
 	    'id'    => $prefix.'image',  
 	    'type'  => 'image'  
-	) 
+	),
+	array(  
+	    'label'  => 'Link',  
+	    'desc'  => 'http:// wenn fremde Seite, / wenn interne Seite',  
+	    'id'    => $prefix.'link',  
+	    'type'  => 'text'  
+	) 	 
 );
 // Use nonce for verification
 echo '<input type="hidden" name="cubetech_image_carousel_meta_box_nonce" value="'.wp_create_nonce(basename(__FILE__)).'" />';
@@ -105,7 +111,7 @@ echo '<input type="hidden" name="cubetech_image_carousel_meta_box_nonce" value="
 					// image
 					case 'image':
 						if ($meta) {
-							$image = wp_get_attachment_image_src($meta, 'medium');
+							$image = wp_get_attachment_image_src($meta, 'cubetech-image-carousel-thumb');
 							$image = '<img src="' . $image[0] . '" class="cubetech-preview-image" alt="' . $field['id'] . '" style="max-height: 100px;" /><br />';
 						} else {
 							$image = '<img class="cubetech-preview-image" alt="" style="max-height: 100px;" /><br />';
@@ -133,7 +139,13 @@ $cubetech_image_carousel_meta_fields = array(
 	    'desc'  => 'Bild im Slider',  
 	    'id'    => $prefix.'image',  
 	    'type'  => 'image'  
-	) 
+	),
+	array(  
+	    'label'  => 'Link',  
+	    'desc'  => 'http:// wenn fremde Seite, / wenn interne Seite',  
+	    'id'    => $prefix.'link',  
+	    'type'  => 'text'  
+	) 	 
 );
 	// verify nonce
 	if (!wp_verify_nonce($_POST['cubetech_image_carousel_meta_box_nonce'], basename(__FILE__))) 
