@@ -65,11 +65,11 @@ function cubetech_image_carousel_content($posts) {
 		
 		$link = '';
 
-		if(isset($post_meta_data['cubetech_image_carousel_externallink'][0]) && $post_meta_data['cubetech_image_carousel_externallink'][0] != '')
+		/*if(isset($post_meta_data['cubetech_image_carousel_externallink'][0]) && $post_meta_data['cubetech_image_carousel_externallink'][0] != '')
 			$link = '<span class="cubetech-image-carousel-link"><a href="' . $post_meta_data['cubetech_image_carousel_externallink'][0] . '" target="_blank">' . get_option('cubetech_image_carousel_link_title') . '</a></span>';
 		elseif ( $post_meta_data['cubetech_image_carousel_links'][0] != '' && $post_meta_data['cubetech_image_carousel_links'][0] != 'nope' && $post_meta_data['cubetech_image_carousel_links'][0] > 0 )
 			$link = '<span class="cubetech-image-carousel-link"><a href="' . get_permalink( $post_meta_data['cubetech_image_carousel_links'][0] ) . '">' . get_option('cubetech_image_carousel_link_title') . '</a></span>';
-
+		*/
 		$args = array(
 		    'post_type' => 'attachment',
 		    'numberposts' => null,
@@ -85,7 +85,7 @@ function cubetech_image_carousel_content($posts) {
 				break;
 			}
 		}
-		
+		if(isset($post_meta_data['cubetech_image_carousel_link'])) {
 		if($post_meta_data['cubetech_image_carousel_link'])
 		{
 			$contentreturn .= '
@@ -98,6 +98,7 @@ function cubetech_image_carousel_content($posts) {
 		<li class="cubetech-image-carousel-icon cubetech-image-carousel-slide-' . $i . '">
 			<div style="display:table-cell; width:267px; height:100px; vertical-align: bottom;">' . $image . '</div>
 		</li>';	
+		}
 		}
 		
 		
